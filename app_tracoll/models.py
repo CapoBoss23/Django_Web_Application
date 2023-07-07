@@ -13,7 +13,7 @@ class Author(models.Model):
         ordering = ['name_of_author']
 
     def __str__(self):
-        return f'{self.name_of_author}'
+        return f'{self.name_of_author}' 
 
 
 class Text(models.Model):
@@ -30,7 +30,7 @@ class Text(models.Model):
     original_language = models.CharField(max_length = 1,choices = POSSIBLE_LANGUAGES,
                                          blank = False,help_text = 'language of the original text')
     
-    # null = True -> author can be unknown
+    # null = True --> author can be unknown
     author=models.ForeignKey(Author, null = True, on_delete= models.SET_NULL)
 
     #choices for translation state
