@@ -1,0 +1,5 @@
+ADMIN:
+Name:admin
+email: lillo@libero.it
+pw:admin12345
+--------------------------------
