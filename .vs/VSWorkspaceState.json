@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\app_tracoll",
+    "\\pj_tracoll"
   ],
+  "SelectedNode": "\\app_tracoll\\models.py",
   "PreviewInSolutionExplorer": false
 }

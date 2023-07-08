@@ -1,11 +1,13 @@
 ﻿{% extends "base_generic.html" %}
+
 {% block content %}
-	<h1>Local Library Home</h1>
-	<p>Welcome to Local Library!</p>
-	<h2>Dynamic content</h2>
-	<p>The library has the following record counts:</p>
+	<h1>TraColl</h1>
+	<p>Welcome TraColl App: a collaborative translation project</p>
+	<h2>TraColl is COOOOOLLLLLLL XD</h2>
+	<p>Here's our stats:</p>
 	<ul>
-		<li><strong>Books:</strong> {{ num_books }}</li>
+		<li><strong>Texts:</strong> {{ num_texts }}</li>
+		<li><strong>Translations:</strong> {{ num_translations }}</li>
 		<li><strong>Authors:</strong> {{ num_authors }}</li>
 	</ul>
 {% endblock %}

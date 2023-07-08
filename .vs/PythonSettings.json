@@ -1,3 +1,4 @@
 {
-  "TestFramework": "unittest"
+  "TestFramework": "unittest",
+  "Interpreter": "..\\..\\Users\\capos\\Envs\\SAW_Es_Lezioni\\env\\Scripts\\python.exe"
 }

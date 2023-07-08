@@ -20,3 +20,12 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+# URL matching from PROJECT LEVEL TO APPLICATION LEVEL
+from django.urls import include
+urlpatterns += [path('app_tracoll/', include('app_tracoll.urls')),]
+
+# URL MAPPING USED TO redirect to app_tracoll when receive empty URL
+from django.views.generic import RedirectView
+urlpatterns += [ path('', RedirectView.as_view(url='app_tracoll/')),]
+
