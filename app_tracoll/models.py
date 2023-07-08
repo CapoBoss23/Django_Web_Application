@@ -5,7 +5,7 @@ from django.db import models
 class Author(models.Model):
 
     AUTHOR_TYPOLOGY=(('P', 'Poet'),('S','Songwriter'),('B','Band'),)
-    type_of_auhor = models.CharField(max_length = 1,choices = AUTHOR_TYPOLOGY,
+    type_of_author = models.CharField(max_length = 1,choices = AUTHOR_TYPOLOGY,
                               blank = False, help_text = 'Typology of author')
     name_of_author = models.CharField(max_length = 100) 
 
@@ -50,6 +50,7 @@ class Text(models.Model):
     def __str__(self):
         return f'{self.id}, {self.title} , {self.author}'
 
+from django.contrib.auth.models import User
 
 class Translation(models.Model):
 
@@ -57,8 +58,8 @@ class Translation(models.Model):
     translated_content = models.TextField(max_length=2000)
     original_text =models.OneToOneField(Text, null= True,  on_delete = models.SET_NULL) #null= true? on_delete = models.SET_NULL?
 
-    #???? UTENTE
-    #user =models.OneToOneField(Users) #null= true? on_delete = models.SET_NULL?
+    creator =models.ForeignKey(User,on_delete = models.SET_NULL,
+                                 null = True,blank = True)
 
     class Meta:
         ordering = ['translated_title']
