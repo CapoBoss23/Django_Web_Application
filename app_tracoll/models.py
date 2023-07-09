@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 class Author(models.Model):
@@ -14,6 +14,9 @@ class Author(models.Model):
 
     def __str__(self):
         return f'{self.name_of_author}' 
+
+    def get_absolute_url(self):
+        return reverse('author-detail', args=[str(self.id)])
 
 
 class Text(models.Model):
@@ -58,7 +61,7 @@ class Translation(models.Model):
     translated_content = models.TextField(max_length=2000)
     original_text =models.OneToOneField(Text, null= True,  on_delete = models.SET_NULL) #null= true? on_delete = models.SET_NULL?
 
-    creator =models.ForeignKey(User,on_delete = models.SET_NULL,
+    creator =models.OneToOneField(User,on_delete = models.SET_NULL,
                                  null = True,blank = True)
 
     class Meta:
@@ -66,3 +69,7 @@ class Translation(models.Model):
 
     def __str__(self):
         return f'{self.translated_title}'
+
+    #used in reverse function
+    def get_absolute_url(self):
+        return reverse('translation-detail', args=[str(self.id)])

@@ -20,7 +20,20 @@ def index(request):
 
 #for visualization of Author and Translations in 2 other pages
 class AuthorListView(generic.ListView):
-	model = Author
+    paginate_by = 3
+    model = Author
 
 class TranslationListView(generic.ListView):
-	model = Translation
+    paginate_by = 3
+    model = Translation
+
+# views used to see details of a single text and translation or author
+
+# LoginRequiredMixin,
+class TranslationDetailView(generic.DetailView):
+    #login_url = '/accounts/login/' 
+    model = Translation
+
+class AuthorDetailView(generic.DetailView):
+    #login_url = '/accounts/login/' 
+    model = Author
