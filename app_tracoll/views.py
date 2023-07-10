@@ -22,8 +22,8 @@ def index(request):
     return render(request, 'index.html',context=ctx)
 
 #for visualization of Author, Translations, Texts in other pages
-class AuthorListView(LoginRequiredMixin, generic.ListView):
-    login_url = '/accounts/login/'
+class AuthorListView(generic.ListView):
+    #login_url = '/accounts/login/'
     paginate_by = 3
     model = Author
 

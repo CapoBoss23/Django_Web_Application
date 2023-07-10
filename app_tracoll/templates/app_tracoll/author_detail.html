@@ -16,21 +16,21 @@
 					<h4>Texts:</h4>
 					<ul>
 						{% for text in author.text_set.all %}
-						{% if request.user.is_authenticated and text.status_of_translation == 'W' %}
+						{% if text.status_of_translation == 'W' and request.user.is_authenticated %}
 						<li>
-							<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a></b>
+							<b>{{text.title}} : WAITING FOR TRANSLATION</b>
 						</li>
-						{% elif request.user.is_authenticated and text.status_of_translation == 'E' %}
+						{% elif text.status_of_translation == 'E' and request.user.is_authenticated %}
 						<li>
-							<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a></b>
+							<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}} : EDITABLE TRANSLATION</a></b>
 						</li>
-						{% elif request.user.is_authenticated and text.status_of_translation == 'L' %}
+						{% elif text.status_of_translation == 'L' and request.user.is_authenticated %}
 						<li>
 							<span>{{text.title}} <span style="color:red;">Under revision by administrator</span></span>
 						</li>
-						{% else %}
+						{% elif text.status_of_translation == 'V' %}
 						<li>
-							<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a>
+							<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: FINAL TRANSLATION</a>
 						</li>
 						{% endif %}
 						{% endfor %}

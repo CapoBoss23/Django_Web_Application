@@ -1,6 +1,6 @@
 SUPERUSER:
 
-Name:sudo
+Name: sudo
 email: lillo@libero.it
 pw:sudo12345!
 --------------------------------

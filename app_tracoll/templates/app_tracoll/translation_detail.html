@@ -6,7 +6,12 @@
         <p><strong> Original Text: </strong> <br>{{ translation.original_text.content }}</p>
         <h1>Translated title: {{ translation.translated_title }}</h1>
         <p><strong> Translated Text: </strong> <br>{{ translation.translated_content }}</p>
-     {% else %}
+     {% elif user.is_authenticated %}
         <h1>FOOOOOOOOOOOORRRRRRMMMMMMMMMMMM</h1>
+    {% else %}
+        <span style="color: red;"> 
+            You have no permission to be here!!!  
+            <a href="{% url 'login' %"> LOG IN</a>
+        </span>
      {% endif %}
 {% endblock %}
