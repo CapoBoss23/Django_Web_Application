@@ -4,6 +4,9 @@ from django.views import generic
 
 from .models import Text, Author , Translation
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 def index(request):
     # objects -> utility class provided by Django for several 
     # actions like counting occurences of a certain type
@@ -18,14 +21,22 @@ def index(request):
     }
     return render(request, 'index.html',context=ctx)
 
-#for visualization of Author and Translations in 2 other pages
-class AuthorListView(generic.ListView):
+#for visualization of Author, Translations, Texts in other pages
+class AuthorListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     paginate_by = 3
     model = Author
 
 class TranslationListView(generic.ListView):
     paginate_by = 3
     model = Translation
+
+#class TextListView(LoginRequiredMixin, generic.ListView):
+#    #fallback page if user is NOT logged in
+#    login_url = '/accounts/login/'
+#    paginate_by = 3
+#    model = Text
+    
 
 # views used to see details of a single text and translation or author
 

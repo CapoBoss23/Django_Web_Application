@@ -56,12 +56,12 @@ class Text(models.Model):
 from django.contrib.auth.models import User
 
 class Translation(models.Model):
-
+    
     translated_title = models.CharField(max_length=100)   
     translated_content = models.TextField(max_length=2000)
     original_text =models.OneToOneField(Text, null= True,  on_delete = models.SET_NULL) #null= true? on_delete = models.SET_NULL?
 
-    creator =models.OneToOneField(User,on_delete = models.SET_NULL,
+    creator =models.ForeignKey(User,on_delete = models.SET_NULL,
                                  null = True,blank = True)
 
     class Meta:

@@ -11,23 +11,32 @@
 		{% if author.type_of_author == 'S' %}
 			<p><b>Typology:</b> SONGWRITER </p>
 		{% endif %}
-		<div style="margin-left:20px;margin-top:20px">
-			{% if author.text_set.all %}
-				<h4>Translated texts:</h4>
-				<ul>
-					{% for texts in author.text_set.all %}
-						{% if texts.status_of_translation == 'E' or texts.status_of_translation == 'V' %}
-					<li>
-						<a href="{{texts.translation.get_absolute_url}}" target="_self">
-							{{texts.title}}
-						</a>
-					</li>
+			<div style="margin-left:20px;margin-top:20px">
+				{% if author.text_set.all %}
+					<h4>Texts:</h4>
+					<ul>
+						{% for text in author.text_set.all %}
+						{% if request.user.is_authenticated and text.status_of_translation == 'W' %}
+						<li>
+							<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a></b>
+						</li>
+						{% elif request.user.is_authenticated and text.status_of_translation == 'E' %}
+						<li>
+							<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a></b>
+						</li>
+						{% elif request.user.is_authenticated and text.status_of_translation == 'L' %}
+						<li>
+							<span>{{text.title}} <span style="color:red;">Under revision by administrator</span></span>
+						</li>
+						{% else %}
+						<li>
+							<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a>
+						</li>
 						{% endif %}
-					{% endfor %}
-				</ul>
-			{% else %}
-				<h4 class="text-danger">This author has no traslated texts</h4>
-			
-			{% endif %}
-		</div>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<h4 class="text-danger">This author has no Texts</h4>
+				{% endif %}
+			</div>
 {% endblock %}

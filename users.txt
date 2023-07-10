@@ -1,5 +1,24 @@
-ADMIN:
-Name:admin
+SUPERUSER:
+
+Name:sudo
 email: lillo@libero.it
-pw:admin12345
+pw:sudo12345!
 --------------------------------
+ADMIN:
+
+Name: admin_Johnny
+pw:Johnny12345
+
+Name: admin_Patty
+pw:Patty12345
+--------------------------------
+Users:
+
+Name: Laura_utenteAuto1
+pw: Laura123!
+
+Name: Mario_utenteAuto2
+pw: Mario123!
+
+Name: Giorgio_utenteAuto3 
+pw: Giorgio123!

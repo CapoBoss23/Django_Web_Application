@@ -6,6 +6,6 @@
     "\\app_tracoll\\templates\\app_tracoll",
     "\\pj_tracoll"
   ],
-  "SelectedNode": "\\app_tracoll\\models.py",
+  "SelectedNode": "\\app_tracoll\\views.py",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,14 @@
+.sidebar-nav {
+	margin-top: 20px;
+	padding: 0;
+	list-style: none;	/*NON MOSTRO PUNTI ELENCO*/
+	background-color: aqua;
+}
+
+body { font-family: "Lato", sans-serif; }
+
+/*PRESE DA BOOTSTRAP*/
+.text-success { color: #28a745; }
+.text-warning { color: #ffc107; }
+.text-danger { color: #dc3545; }
+.text-muted { color: #6C757D; }
