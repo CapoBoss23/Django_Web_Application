@@ -1,17 +1,33 @@
 ﻿{% extends "base_generic.html" %}
 
 {% block content %}
+ 
     {% if translation.original_text.status_of_translation == 'V' %}
         <h1>Original title: {{ translation.original_text.title }}</h1>
         <p><strong> Original Text: </strong> <br>{{ translation.original_text.content }}</p>
         <h1>Translated title: {{ translation.translated_title }}</h1>
         <p><strong> Translated Text: </strong> <br>{{ translation.translated_content }}</p>
-     {% elif user.is_authenticated %}
-        <h1>FOOOOOOOOOOOORRRRRRMMMMMMMMMMMM</h1>
+
+    {%elif translation.original_text.status_of_translation == 'E' %}
+        {% if perms.app_tracoll.permession_of_edit_text_with_every_status or perms.app_tracoll.edit_W_and_E_status_texts %}
+            <h1>Original title: {{ translation.original_text.title }}</h1>
+            <p><strong> Original Text: </strong> <br>{{ translation.original_text.content }}</p>
+            <p>FORMMMMM E</p>
+        {% endif %}
+
+    {%elif translation.original_text.status_of_translation == 'L' and perms.app_tracoll.permession_of_edit_text_with_every_status%} 
+        {% if perms.app_tracoll.permession_of_edit_text_with_every_status or perms.app_tracoll.edit_W_and_E_status_texts %}
+            <h1>Original title: {{ translation.original_text.title }}</h1>
+            <p><strong> Original Text: </strong> <br>{{ translation.original_text.content }}</p>
+        {% endif %}
+        {if perms.app_tracoll.permession_of_edit_text_with_every_status}
+            <p>FORMMMMM  L</p>
+
     {% else %}
-        <span style="color: red;"> 
-            You have no permission to be here!!!  
-            <a href="{% url 'login' %"> LOG IN</a>
-        </span>
-     {% endif %}
+        {% if perms.app_tracoll.permession_of_edit_text_with_every_status or perms.app_tracoll.edit_W_and_E_status_texts %}
+            <h1>Original title: {{ translation.original_text.title }}</h1>
+            <p><strong> Original Text: </strong> <br>{{ translation.original_text.content }}</p>
+            <p>FORMMMMM W</p>
+        {% endif %}
+    {% endif %}
 {% endblock %}

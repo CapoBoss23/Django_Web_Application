@@ -48,3 +48,5 @@ class TranslationDetailView(generic.DetailView):
 class AuthorDetailView(generic.DetailView):
     #login_url = '/accounts/login/' 
     model = Author
+
+

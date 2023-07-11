@@ -7,3 +7,8 @@ urlpatterns = [path('' , views.index , name='index' ),
                path('translation/<int:pk>', views.TranslationDetailView.as_view(), name='translation-detail'),
                path('author/<int:pk>', views.AuthorDetailView.as_view(), name='author-detail'),
                ]
+               
+
+
+
+

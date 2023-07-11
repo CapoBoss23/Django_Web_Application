@@ -11,12 +11,15 @@ class Author(models.Model):
 
     class Meta:
         ordering = ['name_of_author']
+        permissions = (("can_watch_every_status", "You can watch every text status"),)
 
     def __str__(self):
         return f'{self.name_of_author}' 
 
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
+
+
 
 
 class Text(models.Model):
@@ -66,6 +69,8 @@ class Translation(models.Model):
 
     class Meta:
         ordering = ['translated_title']
+        permissions = (("permession_of_edit_text_with_every_status", "You can edit every text in every status"),
+        ("edit_W_and_E_status_texts","You can edit W and E text status"))
 
     def __str__(self):
         return f'{self.translated_title}'
