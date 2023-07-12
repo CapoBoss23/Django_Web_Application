@@ -13,11 +13,18 @@ def index(request):
     n_texts = Text.objects.all().count()
     n_translations = Translation.objects.all().count()
     n_authors = Author.objects.all().count()
+
+    #cookies management
+    num_visits = request.session.get('num_visits', 0)
+    num_visits = num_visits + 1
+    request.session['num_visits'] = num_visits
+    request.session.modified = True
     
     ctx = {
         'num_texts' : n_texts,
         'num_translations' : n_translations,
         'num_authors' : n_authors,
+        'num_visits': num_visits,
     }
     return render(request, 'index.html',context=ctx)
 
@@ -29,7 +36,7 @@ class AuthorListView(generic.ListView):
 
 class TranslationListView(generic.ListView):
     paginate_by = 3
-    model = Translation
+    model = Translation    #override of this function    def get_queryset(self):        #lookup across relation of Text (calling ) and Translation        # this function will be called and the result will be saved in translation_list object        # that can be used in template translation_list.html        final_translations = Translation.objects.filter(original_text__status_of_translation = 'V')        return final_translations.order_by('translated_title')
 
 #class TextListView(LoginRequiredMixin, generic.ListView):
 #    #fallback page if user is NOT logged in

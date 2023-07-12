@@ -2,18 +2,21 @@
 
 {% block content %}
 	<h1>Translations List</h1>
-		{% if translation_list %}
+
 	<ul>
 		{% for translation in translation_list %}
-		<li>
-			<b><a href="{{translation.get_absolute_url}}" target="_self">{{ translation.translated_title }}</a></b>
+			<li>
+				{% if translation.original_text.status_of_translation == 'V' %}
+				<b><a href="{{translation.get_absolute_url}}" target="_self">{{ translation.translated_title }}</a></b>
 
-			<a href="{{translation.original_text.author.get_absolute_url}}" target="_self">
-			{{ translation.original_text.author.name_of_author }}</a>
-		</li>
+				<a href="{{translation.original_text.author.get_absolute_url}}" target="_self">
+					{{ translation.original_text.author.name_of_author }}
+				</a>
+				{% endif %}
+			</li>
+		{% empty %}
+			<p>There are no translations in the app.</p>
 		{% endfor %}
 	</ul>
-		{% else %}
-			<p>There are no translations in the app.</p>
-		{% endif %}
+
 {% endblock %}>

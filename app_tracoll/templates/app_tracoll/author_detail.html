@@ -13,63 +13,54 @@
 	{% endif %}
 
 	{% if user.is_authenticated and perms.app_tracoll.can_watch_every_status %}
-	<h4>All texts: </h4>	
+		<h4>All texts: </h4>	
 			
-	{% if author.text_set.all %}
-			<ul>
-				{% for text in author.text_set.all %}
-					{% if text.status_of_translation == 'W' %}
-						<li>
-							<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: WAITING FOR TRANSLATION</a>
-						</li>
-					{% elif text.status_of_translation == 'E' %}
-						<li>
-							<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: EDITABLE TRANSLATION</a></b>
-						</li>
-					{% elif text.status_of_translation == 'L' %}
-						<li>
-							{% if perms.app_tracoll.permession_of_edit_text_with_every_status %}
-								<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: UNDER AMMINISTRATOR REVISION</a>
-							{% else %}
-								<span>{{text.title}} <span style="color:red;">Under revision by administrator</span></span>
-							{% endif %}
-						</li>
-						{% elif text.status_of_translation == 'V' %}
-						<li>
-							<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: FINAL TRANSLATION</a>
-						</li>
-					{% endif %}
-				{% endfor %}
-
-			</ul>
+		{% if author.text_set.all %}
+				<ul>
+					{% for text in author.text_set.all %}
+						{% if text.status_of_translation == 'W' %}
+							<li>
+								<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: WAITING FOR TRANSLATION</a>
+							</li>
+						{% elif text.status_of_translation == 'E' %}
+							<li>
+								<b><a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: EDITABLE TRANSLATION</a></b>
+							</li>
+						{% elif text.status_of_translation == 'L' %}
+							<li>
+								{% if perms.app_tracoll.permession_of_edit_text_with_every_status %}
+									<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: UNDER AMMINISTRATOR REVISION</a>
+								{% else %}
+									<span>{{text.title}} <span style="color:red;">Under revision by administrator</span></span>
+								{% endif %}
+							</li>
+							{% elif text.status_of_translation == 'V' %}
+							<li>
+								<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}: FINAL TRANSLATION</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
 		{% else %}
-			<h4 class="text-danger">This author has no Texts</h4>
+				<h4 class="text-danger">This author has no Texts</h4>
 		{% endif %}	
-
 	{% else %}	
-
-	{% if author.text_set.all %}
+		{% if author.text_set.all %}
 			<h4>Translated texts:</h4>
 			<ul>
 				{% for text in author.text_set.all %}
-				{% if  text.status_of_translation == 'V' %}
-				<li>
-					<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}} </a>
-				</li>
-						
-				{% endif %}
+					{% if  text.status_of_translation == 'V' %}
+					<li>
+						<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}} </a>
+					</li>
+					{% endif %}
 				{% endfor %}
 			</ul>
 		{% else %}
 			<h4 class="text-danger">This author has no Texts</h4>
 		{% endif %}
-
-
-
-			
 	{% endif %}	
 
-		
 {% endblock %}
 
 				

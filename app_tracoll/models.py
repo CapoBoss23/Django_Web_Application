@@ -37,7 +37,7 @@ class Text(models.Model):
                                          blank = False,help_text = 'language of the original text')
     
     # null = True --> author can be unknown
-    author=models.ForeignKey(Author, null = True, on_delete= models.SET_NULL)
+    author= models.ForeignKey(Author, null = True, on_delete= models.SET_NULL)
 
     #choices for translation state
     TRANSLATION_STATE=(('W','Waiting for translation'),
@@ -57,6 +57,7 @@ class Text(models.Model):
         return f'{self.id}, {self.title} , {self.author}'
 
 from django.contrib.auth.models import User
+
 
 class Translation(models.Model):
     
