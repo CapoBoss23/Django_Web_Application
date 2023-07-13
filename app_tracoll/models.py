@@ -19,7 +19,21 @@ class Author(models.Model):
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
 
+    #def has_final_translations(self):
+        #final_translations_set = self.text_set.all.objects.filter(status_of_translation__exact = 'V')
+        
+        ##create new set
+        #final_translations_set = {}
 
+        ##iterate on text_set
+        #for text in self.text_set:
+        #    if(text.status_of_translation == 'V'):
+        #        final_translations_set.append(text)
+
+        #    #[x for x in set(self.text_set) if x.status_of_translation == 'V']
+        ##get len of the given filtered set
+        #final_translations_count = len(final_translations_set)
+        #return (final_translations_count != 0)
 
 
 class Text(models.Model):
