@@ -1,5 +1,6 @@
 # pj_tracoll_Web_Application
 
+Web application for collaborative translation to italian.
 ## ATTENTION! THIS REPOSITORY IS ARCHIVED. FEEL FREE TO FORK IF YOU WANT: GIVE CREDIT TO THE ORIGINAL PROJECT AND RESPECT THE LICENSE OF THE PROJECT
 
 <!-- TABLE OF CONTENTS -->
