@@ -1,0 +1,58 @@
+
+/*--------------------IMG-----------------------*/
+
+.flag{
+	width: 35px;
+	height: 25px;
+}
+
+.fg_min{
+	width: 16px;
+	height: 12px;
+}
+
+#user {
+	width: 20px;
+	height: 20px;
+}
+
+#pen{
+	width: 15px;
+	height: 15px;
+}
+
+/*-------------LIST-AND-DETAIL-LINKS------------*/
+
+.detail_list_links {
+	margin-top: 2%;
+	list-style-type: circle;
+}
+
+
+/*-------------------colors---------------------*/
+
+.red-text{color: #AA151B;}
+.orange-text{color: orange;}
+.green-text{color: #15A303;}
+.gray-text{color: gray;}
+
+
+.text-success { color: #28a745; }
+.text-warning { color: #ffc107; }
+.text-danger { color: #dc3545; }
+.text-muted { color: #6C757D; }
+
+
+/*--------------pagination--------------*/
+
+.pagination{
+	position: fixed;
+	bottom: 5%;
+	right: 5%;
+}
+
+/*--------------pagination--------------*/
+.login_div{
+	margin-left: 7%;
+	margin-right:8%;
+}

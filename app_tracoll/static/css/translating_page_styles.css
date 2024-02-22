@@ -1,0 +1,19 @@
+/*----------------TRASLATING_PAGE.HTML-----------------*/
+
+/*----------TITLE----------*/
+.translating_page_title{
+	text-transform: uppercase;
+	color: #152F52;
+}
+
+/*-----------DIV------------*/
+
+.translating_page_div{
+	margin-left: 7%;
+	margin-right:8%;
+}
+
+/*--------LINK STYLES ARE IN 'generic_styles.css' ---------->>>
+*/
+
+

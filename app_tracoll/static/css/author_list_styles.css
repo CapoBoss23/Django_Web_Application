@@ -1,0 +1,18 @@
+/*--------------------AUTHOR_LIST.HTML-------------------*/
+
+/*----------TITLE----------*/
+
+.author_list_title{
+	text-align: center;
+	text-transform: uppercase;
+	color: #152F52;
+}
+
+/*-----------DIV-----------*/
+
+.author_list_div {
+	margin-left: 7%;
+}
+
+/*--------LINK STYLES ARE IN 'generic_styles.css' ---------->>>
+*/

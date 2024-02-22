@@ -1,0 +1,42 @@
+﻿{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <div class="translation_detail_div">
+
+        {% if translation.original_text.status_of_translation == 'V' %}     <!--FURTHER checking text in final translation status -->
+
+            <h2 class="translation_detail_title">Original: </h2>            <!-- **ORIGINAL PART** -->
+            <div id="td_div1"> 
+                <h3 class="translation_detail_subtitle">  
+
+                    <!--how to display flags; if you want to add flag image, add it to 'flags' directory with name of the language -->
+                    <span><img class="flag" src="../../static/flags/{{translation.original_text.original_language.name_of_language}}.svg"></span>
+                
+                    &nbsp &nbsp &nbsp &nbsp                                 <!-- space between flag and title -->
+                    {{ translation.original_text.title }}                   <!-- ORIGINAL TITLE -->
+                </h3>
+                <p>{{ translation.original_text.content }}</p>              <!-- ORIGINAL CONTENT -->
+            </div>
+            <br>                                                            <!-- ---------------------------------------------------------- -->
+            <hr>
+            <h2 class="translation_detail_title">Translated: </h2>          <!-- **TRANSLATED PART** -->
+            
+            <div id="td_div2">
+                <h3 class="translation_detail_subtitle">
+                <span><img class="flag" src="../../static/flags/Italian.svg"></span>        <!-- Italian flag because traslation is always in italian language --> 
+                &nbsp &nbsp &nbsp &nbsp                                                     <!-- space between flag and title -->
+                {{ translation.translated_title }}                                          <!-- TRANSLATED TITLE -->
+                </h3>                 
+                <p>{{ translation.translated_content }}</p>                                 <!-- TRANSLATED CONTENT -->
+            </div>
+
+        {% else %}
+
+            <p>This is NOT a Final Translation, and CANNOT be displayed in this page. 
+            <br><a href=" {% url 'index' %}" target="_self">BACK HOME</a></p>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

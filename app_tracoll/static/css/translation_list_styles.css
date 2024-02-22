@@ -1,0 +1,18 @@
+/*----------------TRANSLATION_LIST.HTML-------------------*/
+
+/*----------TITLE----------*/
+
+.translation_list_title{
+	text-align: center;
+	text-transform: uppercase;
+	color: #152F52;
+}
+
+/*-----------DIV-----------*/
+
+.translation_list_div {
+	margin-left: 7%;
+}
+/*--------LINK STYLES ARE IN 'generic_styles.css' ---------->>>
+*/
+

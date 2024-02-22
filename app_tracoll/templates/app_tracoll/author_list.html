@@ -1,0 +1,18 @@
+﻿{% extends "base_generic.html" %}
+	{% block content %}
+	<h1 class="author_list_title">Authors List</h1>	
+	<br>												
+		<div class="author_list_div">
+			{% if author_list %}
+				{% for author in author_list %}         <!-- displaying author -->
+				<ul>
+					<li class="detail_list_links">
+						<a href="{{ author.get_absolute_url }}">{{ author.name_of_author }}</a>
+					</li>
+				</ul>
+				{% endfor %}
+			{% else %}
+				<p>There are no authors in the app.</p>
+			{% endif %}
+		</div>
+	{% endblock %}>

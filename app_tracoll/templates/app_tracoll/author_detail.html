@@ -1,0 +1,96 @@
+﻿{% extends "base_generic.html" %}
+
+{% block content %}
+	<div class="author_detail_div">
+		
+		<h2 class="author_detail_title"> {{ author.name_of_author }} </h2>
+		
+		{% if author.type_of_author == 'P' %}<p>POET</p>
+		{% elif author.type_of_author == 'B' %}<p>BAND</p>
+		{% elif author.type_of_author == 'S' %}<p>SONGWRITER</p>
+		{% endif %}
+
+		<br>
+
+		{% if user.is_authenticated %}			<!-- ------------------------ for authenticated user ------------------------------------- -->
+			<h4>All texts: </h4>
+
+			{% if author.text_set.all %}
+				<ul>
+					{% for text in author.text_set.all %}
+					
+					
+						{% if text.status_of_translation == 'V' %}							<!-- 'V' status -->
+						<li class="detail_list_links">
+							<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a>
+							<span>
+							<!--how to display flags; if you want to add flag image, add it to 'flags' directory with name of the language -->
+							<img class="fg_min" src="../../static/flags/{{text.original_language.name_of_language}}.svg">
+							</span>
+							:&nbsp &nbsp 
+							<b><span class="green-text">FINAL TRANSLATION <img id="pen" src="../../static/flags/Italian.svg"></span></b>
+						</li>
+						{% else %}
+							{% if perms.app_tracoll.can_watch_every_status %}
+							<li class="detail_list_links">
+								<a href="{% url 'translating-page' text.pk %}" target="_self">{{text.title}}</a>
+								<span>
+								<!--how to display flags; if you want to add flag image, add it to 'flags' directory with name of the language -->
+								<img class="fg_min" src="../../static/flags/{{text.original_language.name_of_language}}.svg">
+								</span> 
+								:&nbsp &nbsp
+								
+
+								{% if text.status_of_translation == 'W' %}					<!-- 'W' status -->
+								<span class="red-text">WAITING FOR TRANSLATION</span></b>
+									
+								{% elif text.status_of_translation == 'E' %}				<!-- 'E' status -->
+								<span class="orange-text">
+								<img id="pen" src="../../static/images/pen.png">			<!-- pen image for editable transion -->
+								EDITABLE TRANSLATION
+								</span>
+									
+								{% elif text.status_of_translation == 'L' %}				<!-- 'L' status -->
+								<span class="gray-text">UNDER REVISION BY ADMINISTRATOR</span>
+
+								{% endif %}
+							</li>
+							{% endif %}
+						{% endif %}
+
+								
+							
+					{% endfor %}
+				</ul>
+			{% else %}
+					<h4 class="text-danger">This author has no Texts</h4>
+			{% endif %}
+
+		{% else %}								<!-- ------------------------ for not authenticated user --------------------------------------->
+			{% if author.text_set.all %}
+				{% if number_of_final_texts == 0 %}
+					<h4 class="text-danger">This author has no Texts with final translatons</h4>
+				{% else %}
+					<h4>All translated texts: </h4>
+					<ul>
+						{% for text in author.text_set.all %}
+							{% if  text.status_of_translation == 'V' %}
+							<li class="detail_links">
+								<a href="{{text.translation.get_absolute_url}}" target="_self">{{text.title}}</a>
+								&nbsp
+								<span>
+								<!--how to display flags; if you want to add flag image, add it to 'flags' directory with name of the language -->
+								<img class="fg_min" src="../../static/flags/{{text.original_language.name_of_language}}.svg">
+								</span> 
+							</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% else %}
+				<h4 class="text-danger">This author has no Texts</h4>
+			{% endif %}
+		{% endif %}
+	</div>
+{% endblock %}
+

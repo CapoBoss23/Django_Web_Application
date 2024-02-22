@@ -1,0 +1,67 @@
+﻿{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="home_div">
+
+	<h1 class="home_title">COLLABORATIVE TRANSLATION</h1>											<!-- TITLE -->
+	
+	<h3 style="text-align: center;"><img class="home_flag" src="../../static/images/gif.gif">		<!-- SUBTITLE -->
+		&nbsp
+		<span class="home_subtitle">Welcome to TraColl</span>
+		&nbsp
+		<img class="home_flag" src="../../static/images/gif.gif">
+	</h3>
+	<h4 id="h4_home">A collaborative translation project to italian language</h4>					
+	<br>
+	<br>
+	<br>
+
+	<!-- displaying flag -->
+
+	<p style="text-align:center;">
+		<strong>Languages:</strong> 
+		<img class="fg_min" src="../../static/flags/English.svg">
+		<img class="fg_min" src="../../static/flags/Spanish.svg">
+		<img class="fg_min" src="../../static/flags/French.svg">
+		<img class="fg_min" src="../../static/flags/German.svg">
+		<img class="fg_min" src="../../static/flags/Portuguese.svg">
+	</p>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<!-- --------------------DISPLAING STATS---------------------- -->
+
+	<table id="home_table">
+		<tbody>
+			<tr>
+				<td>
+					<ul>		<!-- number of texts -->
+						<li class="home_list" ><strong>Texts:</strong> {{ num_texts }}</li>    
+					</ul>
+				</td>
+				<td>
+					<ul>		<!-- number of translations -->
+						<li class="home_list" ><strong>Translations:</strong> {{ num_translations }}</li>
+					</ul>
+				</td>
+				<td>
+					<ul>		<!-- number of texts -->
+						<li class="home_list" ><strong>Authors:</strong> {{ num_authors }}</li>
+					</ul>
+				</td>
+				<td>
+					<ul>		<!-- number of texts -->
+						<li class="home_list" ><strong>Number of visits:</strong> {{ num_visits }}</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	
+</div>
+{% endblock %}

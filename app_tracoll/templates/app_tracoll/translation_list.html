@@ -1,0 +1,45 @@
+﻿{% extends "base_generic.html" %}
+
+{% block content %}
+	<h1 class="translation_list_title"> Final translations List</h1>
+	<br>
+	<div class="translation_list_div">
+		<table style="width:60%">
+			{% for translation in translation_list %}
+			<tr>
+				<!-- 1° column  -->
+				<td class="detail_list_links">
+					<ul>
+						<li>
+							{% if translation.original_text.status_of_translation == 'V' %}					<!-- final status translation -->
+						
+							<b><a href="{{translation.get_absolute_url}}" target="_self">
+							{{ translation.translated_title }}</a></b>										<!-- title of translation -->
+
+							<!-- flags diplaying: -->
+							&nbsp
+							<span>
+							<!--how to display flags; if you want to add flag image, add it to 'flags' directory with name of the language -->
+							<img class="fg_min" src="../../static/flags/{{translation.original_text.original_language.name_of_language}}.svg">
+							</span>
+							/
+							<img class="fg_min" src="../../static/flags/Italian.svg">
+							<!-- -------------------- -->
+						</li>
+					</ul>
+				</td>
+				<!-- 2° column  -->
+				<td>
+					<a href="{{translation.original_text.author.get_absolute_url}}" target="_self">
+						{{ translation.original_text.author.name_of_author }}								<!-- author name  -->
+					</a>
+					{% endif %}
+				</td>
+			</tr>
+			{% empty %}
+				<p>There are no translations in the app.</p>
+			{% endfor %}
+		</table>
+	</div>
+
+{% endblock %}>

@@ -1,0 +1,39 @@
+
+
+/*----------------TRANSLATION_DETAIL.HTML-----------------*/
+
+/*----------TITLE----------*/
+
+.translation_detail_title{
+	text-transform: uppercase;
+	color: #152F52;
+	margin-top: 4%;
+}
+
+.translation_detail_subtitle{
+	text-transform: uppercase;
+	color: #152F52;
+}
+
+/*-----------DIVs-----------*/
+
+.translation_detail_div{
+	margin-left: 7%;
+	margin-right:8%;
+}
+
+#td_div1 {
+	border-left: 0.5rem solid #AA151B;
+	padding-left:1rem;
+	margin-top: 1%;
+}
+
+#td_div2 {
+	border-left: 0.5rem solid #15A303;
+	padding-left:1rem;
+	margin-top: 1%;
+}
+
+/*--------FLAG IMG STYLES ARE IN 'generic_styles.css' ---------->>>
+*/
+

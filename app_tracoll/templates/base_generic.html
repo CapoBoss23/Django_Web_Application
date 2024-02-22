@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+    <title>TraColl</title>
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    {% load static %}                                                                       <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/author_detail_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/author_list_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/translation_detail_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/translation_list_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/translating_page_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/generic_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_layout_and_styles.css' %}">
+    
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2" >
+                {% block sidebar %}                                                         <!-- SIDEBAR -->
+                <ul class="sidebar-nav">
+                    <li class="list_bar"><a class="side_link" href="{% url 'index' %}"><b>HOME</b></a></li>
+                    <li class="list_bar"><a class="side_link" href="{% url 'authors' %}"><b>AUTHORS</b></a></li>
+                    <li class="list_bar"><a class="side_link" href="{% url 'translations' %}"><b>TRANSLATIONS</b></a></li>
+
+                    {% if user.is_authenticated %}
+
+                    <li class="list_bar">
+                        <span><img id="user" onerror="this.style.display='none'" src="../../static/images/user.png"></span> {{ user.get_username }}<br>
+                        (<a class="side_link" href="{% url 'logout' %}?next={% url 'index' %}">
+                            Logout
+                        </a>)
+                    </li>
+                    {% else %}
+                    <li class="list_bar">
+                        No user:
+                        <a class="side_link" href="{% url 'login' %}?next={{ request.path }}">
+                            <b>Login</b>
+                        </a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+                {% endblock %}
+            </div>
+            <div class="col-sm-10">
+                {% block content %}
+                {% endblock %}
+                {% block pagination %}                                                      <!-- Pagination -->
+                {% if is_paginated %}
+                <div class="pagination">
+                    {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

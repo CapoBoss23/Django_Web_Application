@@ -1,0 +1,21 @@
+
+/*----------------AUTHOR_DETAIL.HTML-----------------*/
+
+/*----------TITLE----------*/
+.author_detail_title{
+	text-transform: uppercase;
+	color: #152F52;
+	margin-top: 3%;
+	margin-bottom: -1%;
+}
+
+
+/*-----------DIV------------*/
+
+.author_detail_div{
+	margin-left: 7%;
+	margin-right:8%;
+}
+
+/*--------LINK STYLES ARE IN 'generic_styles.css' ---------->>>
+*/
